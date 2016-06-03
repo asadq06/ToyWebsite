@@ -1,0 +1,16 @@
+﻿@using ToyWebsite.Models
+
+@model List<Category>
+
+<div class="dropdown">
+    <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Categories
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+       @foreach (Category c in Model)
+       {
+           <li><a href="@Url.Action("Category","Display",new { categoryID = c.categoryID })" >@c.categoryName</a></li>
+       }
+    </ul>
+</div>
