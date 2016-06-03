@@ -1,0 +1,21 @@
+﻿@using ToyWebsite.Models
+@model List<Item>
+
+@{
+    ViewBag.Title = "Category";
+}
+
+<h2>@ViewBag.categoryName</h2>
+
+
+
+@foreach (Item i in Model)
+{
+    <div class="col-md-2">
+        <a href="@Url.Action("Product", "Display", new { itemID = i.itemID })">
+            <img src="@Url.Content("~/images/" + i.itemFileName)" class="img-rounded img-responsive" />
+        </a>
+        <label>@i.itemName</label>
+    </div>
+}
+
