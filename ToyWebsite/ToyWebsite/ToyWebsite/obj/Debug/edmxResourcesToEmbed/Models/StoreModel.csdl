@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="StoreModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="StoreModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Items" EntityType="StoreModel.Item" />
+  </EntityContainer>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="itemID" />
+    </Key>
+    <Property Name="itemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="itemName" Type="String" Nullable="false" />
+    <Property Name="itemCost" Type="String" Nullable="false" />
+    <Property Name="itemStock" Type="String" Nullable="false" />
+    <Property Name="itemQuanititySold" Type="String" Nullable="false" />
+    <Property Name="itemDiscription" Type="String" Nullable="false" />
+    <Property Name="itemRating" Type="String" Nullable="false" />
+  </EntityType>
+</Schema>

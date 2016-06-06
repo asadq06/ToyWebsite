@@ -130,7 +130,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\DisplayController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
@@ -146,10 +147,6 @@
     <Compile Include="DAL\StoreInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\StoreDB1.mdf" />
-    <Content Include="App_Data\StoreDB1_log.ldf">
-      <DependentUpon>StoreDB1.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -190,11 +187,16 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Menu\CartQuantity.cshtml" />
-    <Content Include="Views\Display\Product.cshtml" />
-    <Content Include="Views\Display\Category.cshtml" />
+    <Content Include="Views\Product\Item.cshtml" />
+    <Content Include="Views\Product\Category.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
     <None Include="Views\Menu\CategoryDropdown.cshtml" />
+    <Content Include="Views\Product\CartStatus.cshtml" />
+    <Content Include="Views\Product\Example.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

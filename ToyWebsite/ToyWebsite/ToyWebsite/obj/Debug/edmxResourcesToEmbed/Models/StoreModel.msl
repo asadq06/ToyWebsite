@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StoreModelStoreContainer" CdmEntityContainer="StoreModelContainer">
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="IsTypeOf(StoreModel.Item)">
+        <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="itemID" ColumnName="itemID" />
+          <ScalarProperty Name="itemName" ColumnName="itemName" />
+          <ScalarProperty Name="itemCost" ColumnName="itemCost" />
+          <ScalarProperty Name="itemStock" ColumnName="itemStock" />
+          <ScalarProperty Name="itemQuanititySold" ColumnName="itemQuanititySold" />
+          <ScalarProperty Name="itemDiscription" ColumnName="itemDiscription" />
+          <ScalarProperty Name="itemRating" ColumnName="itemRating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
