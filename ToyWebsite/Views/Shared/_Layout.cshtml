@@ -7,12 +7,16 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <div class="navbar-header">
-                @Html.ActionLink("ToyWebsite", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Toy Website", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -45,10 +49,11 @@
                     </div>
                     <div class="col-md-2 col-md-offset-1">
                         <div class="form-group">
-                            <button class="btn btn-default btn-block" type="submit">
+                            <a href="@Url.Action("Index","Cart")" class="btn btn-default btn-block" type="submit">
+            
                                 <span class="glyphicon glyphicon-shopping-cart"></span>
                                 <span class="badge">@{Html.RenderAction("CartQuantity", "Menu");}</span>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -59,10 +64,5 @@
         @RenderBody()
         <hr />
     </div>
-
-
-    @Scripts.Render("~/bundles/jquery")f
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

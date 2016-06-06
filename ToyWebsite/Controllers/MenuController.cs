@@ -26,8 +26,12 @@ namespace ToyWebsite.Controllers
         [ChildActionOnly]
         public ActionResult CartQuantity()
         {
+            StoreContext context = new StoreContext();
+            int cartCount = (from s in context.Carts
+                             where s.userID == 1
+                             select s).Count();
 
-            return PartialView(2);
+            return PartialView(cartCount);
         }
     }
 }

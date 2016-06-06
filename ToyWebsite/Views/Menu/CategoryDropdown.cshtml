@@ -10,7 +10,7 @@
     <ul class="dropdown-menu">
        @foreach (Category c in Model)
        {
-           <li><a href="@Url.Action("Category","Display",new { categoryID = c.categoryID })" >@c.categoryName</a></li>
+           <li><a href="@Url.Action("Category","Product",new { aCategoryID = c.categoryID })" >@c.categoryName</a></li>
        }
     </ul>
 </div>

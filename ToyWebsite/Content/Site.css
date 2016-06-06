@@ -7,3 +7,47 @@
   width: 100%;
   height: auto;
 }
+
+.custom-btn1{
+    height: 60px;
+    color: gold;
+    min-width: 150px;
+}
+
+.custom-btn2{
+    height: 30px;
+    min-width: 60px;
+    color: gold;
+    border-top-right-radius:0px !important;
+    border-bottom-right-radius:0px !important;
+
+}
+
+.custom-btn3{
+    color: gold;
+    text-align: center;
+    font-size: 12px;
+    padding: 3px 10px;
+}
+
+.custom-btn4{
+    color: gold;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    padding: 1px 0;
+    font-size: 12px;
+    line-height: 1.42;
+    border-radius: 15px;
+}
+
+
+.custom-txt1{
+    max-width: 100px;
+    height: 60px;
+}
+
+table img{
+  width:100px;
+  height: 100px;
+}
