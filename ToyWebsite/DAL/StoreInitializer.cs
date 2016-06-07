@@ -14,7 +14,7 @@ namespace ToyWebsite.DAL
             //Users
             var users = new List<User>
             {
-                new User {userEmail = "email", userName = "Guest", userPassword = "123" }
+                new User {userEmail = "email@example.com", userName = "Guest", userPassword = "123456" }
             };
             users.ForEach(s => context.Users.Add(s));
             context.SaveChanges(); 

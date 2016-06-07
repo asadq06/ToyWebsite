@@ -13,11 +13,24 @@ namespace ToyWebsite.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int userID { get; set; }
+
         [DisplayName("Username")]
+        [Required]
+        [MaxLength(32)]
+        [MinLength(4)]
+        [Index(IsUnique = true)]
         public string userName { get; set; }
+
         [DisplayName("Password")]
+        [Required]
+        [MaxLength(32)]
+        [MinLength(6)]
         public string userPassword { get; set; }
+
         [DisplayName("Email")]
+        [Required]
+        [MaxLength(256)]
+        [EmailAddress]
         public string userEmail { get; set; }
 
 
