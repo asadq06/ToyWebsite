@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -12,8 +13,11 @@ namespace ToyWebsite.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int userID { get; set; }
+        [DisplayName("Username")]
         public string userName { get; set; }
+        [DisplayName("Password")]
         public string userPassword { get; set; }
+        [DisplayName("Email")]
         public string userEmail { get; set; }
 
 

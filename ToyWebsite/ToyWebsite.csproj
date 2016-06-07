@@ -130,6 +130,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -190,6 +191,7 @@
     <Content Include="Views\Product\Item.cshtml" />
     <Content Include="Views\Product\Category.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <None Include="Views\Menu\CategoryDropdown.cshtml" />
     <Content Include="Views\Product\CartStatus.cshtml" />
     <Content Include="Views\Product\Example.cshtml" />
