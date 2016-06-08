@@ -17,8 +17,11 @@ namespace ToyWebsite.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddUser(string aUserName, string aUserPassword, string aUserEmail)
+        public ActionResult AddUser(User aUser)
         {
+            StoreContext context = new StoreContext();
+            context.Users.Add(aUser);
+            context.SaveChanges();
 
             return RedirectToAction("RegistrationComplete");
         }
@@ -27,6 +30,20 @@ namespace ToyWebsite.Controllers
         {
             return View();
         }
+
+        //This controls the login page
+        public ActionResult LogIn()
+        {
+            return View();
+        }
+        
+        //This sets who the current user is
+        public void CurrentUser(User aUser)
+        {
+
+        }
+
+
 
 
         

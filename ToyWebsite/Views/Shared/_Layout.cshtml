@@ -11,6 +11,10 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-static-top">
@@ -24,20 +28,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <div class="row">
-                    <div class="col-md-1 col-md-offset-10">
-                        <div class="form-group custom-form-group-left">
-                            <a href="@Url.Action("Register","Account")" class="btn btn-default btn-block" type="submit">
-                               Log In
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-1">
-                        <div class="form-group custom-form-group-right">
-                            <a href="@Url.Action("Register","Account")" class="btn btn-default btn-block" type="submit">
-                                Register
-                            </a>
-                        </div>
-                    </div>
+                    @{Html.RenderAction("UserOptions", "Menu");}
                 </div>
             </div>
             <div class="navbar-collapse collapse">

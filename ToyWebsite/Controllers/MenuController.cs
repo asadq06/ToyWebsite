@@ -33,5 +33,12 @@ namespace ToyWebsite.Controllers
 
             return PartialView(cartCount);
         }
+
+        [ChildActionOnly]
+        public ActionResult UserOptions()
+        {
+            return PartialView();
+        }
+
     }
 }
