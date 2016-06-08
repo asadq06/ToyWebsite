@@ -31,7 +31,7 @@
                 @Html.LabelFor(model => model.userPassword, htmlAttributes: new { @class = "control-label col-md-2" })
             </div>
             <div class="col-md-4">
-                @Html.EditorFor(model => model.userPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.PasswordFor(model => model.userPassword, new { @class = "form-control" } )
             </div>
             <div class="col-md-4">
                 @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })
