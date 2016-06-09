@@ -27,14 +27,23 @@ namespace ToyWebsite.Models
         [MinLength(6)]
         public string userPassword { get; set; }
 
+        [DisplayName("Confirm Password")]
+        [Required]
+        [Compare("userPassword",ErrorMessage = "Passwords do not match.")]
+        public string userConfirmPassword { get; set; }
+
+
         [DisplayName("Email")]
         [Required]
         [MaxLength(256)]
         [EmailAddress]
+        [Index(IsUnique = true)]
         public string userEmail { get; set; }
 
 
         public virtual ICollection<Cart> cart { get; set; }
 
     }
+
+
 }

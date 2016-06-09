@@ -20,6 +20,26 @@ namespace ToyWebsite.Controllers
         public ActionResult AddUser(User aUser)
         {
             StoreContext context = new StoreContext();
+
+            //Check if user already exists
+            if((from u in context.Users
+                where u.userName == aUser.userName
+                select u).Any())
+            {
+                TempData["errorMessage"] = "Username taken.";
+                return RedirectToAction("Register");
+            }
+
+            
+            if ((from u in context.Users
+                 where u.userEmail == aUser.userEmail
+                 select u).Any())
+            {
+                TempData["errorMessage"] = "User with that email address already exists.";
+                return RedirectToAction("Register");
+            }
+            
+
             context.Users.Add(aUser);
             context.SaveChanges();
 

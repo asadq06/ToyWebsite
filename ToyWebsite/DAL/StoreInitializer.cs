@@ -14,7 +14,7 @@ namespace ToyWebsite.DAL
             //Users
             var users = new List<User>
             {
-                new User {userEmail = "email@example.com", userName = "Guest", userPassword = "123456" }
+                new User {userEmail = "email@example.com", userName = "Guest", userPassword = "123456", userConfirmPassword="123456"  }
             };
             users.ForEach(s => context.Users.Add(s));
             context.SaveChanges(); 
@@ -40,7 +40,7 @@ namespace ToyWebsite.DAL
             string woodenTrainDescription = "Cool wooden train. Will keep your child occupied for hours and is safe for all children.";
             var items = new List<Item>
             {
-                new Item {itemName = "Puzzle Cube", itemCost = 10.95f, itemFileName = "cube.png", itemQuantitySold = 0, itemQuantityStock = 10, itemDescription=puzzleCubeDescription, categoryID = 9 },
+                new Item {itemName = "Puzzle Cube", itemCost = 10.95f, itemFileName = "train.jpg", itemQuantitySold = 0, itemQuantityStock = 10, itemDescription=puzzleCubeDescription, categoryID = 9 },
                 new Item {itemName = "Wooden Train", itemCost = 34.91f, itemFileName = "train.jpg", itemQuantitySold = 0, itemQuantityStock = 10, itemDescription=woodenTrainDescription, categoryID = 4 }
 
             };
