@@ -6,7 +6,16 @@
 
 <h2>Log In</h2>
 
-@using (Html.BeginForm())
+@if (TempData["errorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissable" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        @TempData["errorMessage"]
+    </div>
+}
+
+@using (Html.BeginForm("LogInCheck","Account"))
 {
     @Html.AntiForgeryToken()
 

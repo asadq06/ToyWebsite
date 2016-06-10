@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 
 namespace ToyWebsite.Models
@@ -40,8 +42,11 @@ namespace ToyWebsite.Models
         [Index(IsUnique = true)]
         public string userEmail { get; set; }
 
+        //public string? userSalt { get; set; }
 
         public virtual ICollection<Cart> cart { get; set; }
+
+        
 
     }
 

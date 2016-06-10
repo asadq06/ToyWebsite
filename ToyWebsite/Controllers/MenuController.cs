@@ -37,7 +37,24 @@ namespace ToyWebsite.Controllers
         [ChildActionOnly]
         public ActionResult UserOptions()
         {
-            return PartialView();
+            StoreContext context = new StoreContext();
+            User aUser;
+            int currentUserID;
+            if(Session["GuestUser"] == null || (bool)Session["GuestUser"] == true)
+            {
+                aUser = default(User);
+            }
+            else
+            {
+                currentUserID = (int)Session["UserID"];
+                aUser = (from u in context.Users
+                         where u.userID == currentUserID
+                         select u).Single();
+            }
+
+
+
+            return PartialView(aUser);
         }
 
     }
