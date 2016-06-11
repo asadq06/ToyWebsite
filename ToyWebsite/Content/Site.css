@@ -74,3 +74,9 @@ table img {
 {
     display: none;
 }
+
+a:hover {
+    text-decoration: none;
+    color: white;
+    
+}
