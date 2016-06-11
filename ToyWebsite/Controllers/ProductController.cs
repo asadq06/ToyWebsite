@@ -14,6 +14,7 @@ namespace ToyWebsite.Controllers
     {
 
         // GET: Display
+        [LoggingFilter]
         public ActionResult Item(int anItemID)
         {
             StoreContext context = new StoreContext();
@@ -24,6 +25,7 @@ namespace ToyWebsite.Controllers
             return View(item);
         }
 
+        [LoggingFilter]
         public ActionResult Category(int aCategoryID)
         {
             //Store items
@@ -62,8 +64,9 @@ namespace ToyWebsite.Controllers
         public ActionResult CartStatus(int anItemID)
         {
             StoreContext context = new StoreContext();
+            int sessionUserID = (int)Session["UserID"];
             List<Cart> cartItems = (from s in context.Carts
-                                    where s.userID == 1 && s.itemID == anItemID
+                                    where s.userID == sessionUserID && s.itemID == anItemID
                                     select s).DefaultIfEmpty().ToList();
             ViewBag.itemID = anItemID;
 
@@ -72,34 +75,32 @@ namespace ToyWebsite.Controllers
 
         /* Adds an item to the cart */
         [HttpPost]
+        [LoggingFilter]
         public ActionResult AddToCart(int anItemID)
         {
             StoreContext context = new StoreContext();
-            context.Carts.Add(new Cart { itemID = anItemID, userID = 1 });
+            int sessionUserID = (int)Session["UserID"];
+            context.Carts.Add(new Cart { itemID = anItemID, userID = sessionUserID });
             context.SaveChanges();
 
             return RedirectToAction("Item", new { anItemID = anItemID });
         }
 
-        [HttpPost]
-        public void Example()
-        {
-            return;
-        }
-
         //Deletes a cart object
         [HttpPost]
+        [LoggingFilter]
         public ActionResult ChangeItemQuantity(int anItemID, int quantityDifference)
         {
             
             StoreContext context = new StoreContext();
             List<Cart> removeItems;
+            int sessionUserID = (int)Session["UserID"];
 
             if(quantityDifference > 0)
             {
                 for (int i = 0; i < quantityDifference; i++)
                 {
-                    context.Carts.Add(new Cart { itemID = anItemID, userID = 1 });
+                    context.Carts.Add(new Cart { itemID = anItemID, userID = sessionUserID });
                 }
             }
             else if (quantityDifference < 0)
@@ -118,8 +119,5 @@ namespace ToyWebsite.Controllers
             
             return RedirectToAction("Item", new { anItemID = anItemID });
         }
-
-
-
     }
 }

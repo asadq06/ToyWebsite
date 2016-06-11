@@ -1,0 +1,30 @@
+﻿@using ToyWebsite.Models
+@model User
+
+@if ((bool)Session["GuestUser"] == true)
+{
+    <div class="col-md-1 col-md-offset-10">
+        <div class="form-group custom-form-group-left">
+            <a href="@Url.Action("LogIn","Account")" class="btn btn-default btn-block" type="submit">
+                Log In
+            </a>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <div class="form-group custom-form-group-right">
+            <a href="@Url.Action("Register","Account")" class="btn btn-default btn-block" type="submit">
+                Register
+            </a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-md-2 col-md-offset-10">
+        <div class="form-group">
+            <a href="@Url.Action("SignOut","Account")" class="btn btn-info btn-block" type="submit">
+                @Model.userName
+            </a>
+        </div>
+    </div>
+}
