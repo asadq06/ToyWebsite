@@ -10,29 +10,14 @@ namespace ToyWebsite.Controllers
 {
     public class HomeController : Controller
     {
+        [LoggingFilter]
         public ActionResult Index()
         {
-            
             StoreContext context = new StoreContext();
             List<Item> topSellingItems = (from i in context.Items
-                            
                              select i).ToList();
             
             return View(topSellingItems);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

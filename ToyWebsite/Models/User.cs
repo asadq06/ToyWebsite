@@ -43,6 +43,8 @@ namespace ToyWebsite.Models
         public string userEmail { get; set; }
 
         //public string? userSalt { get; set; }
+        [DefaultValue(false)]
+        public bool userGuest { get; set; }
 
         public virtual ICollection<Cart> cart { get; set; }
 

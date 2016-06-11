@@ -27,8 +27,9 @@ namespace ToyWebsite.Controllers
         public ActionResult CartQuantity()
         {
             StoreContext context = new StoreContext();
+            int sessionUserID = (int)Session["UserID"];
             int cartCount = (from s in context.Carts
-                             where s.userID == 1
+                             where s.userID == sessionUserID
                              select s).Count();
 
             return PartialView(cartCount);
@@ -40,7 +41,7 @@ namespace ToyWebsite.Controllers
             StoreContext context = new StoreContext();
             User aUser;
             int currentUserID;
-            if(Session["GuestUser"] == null || (bool)Session["GuestUser"] == true)
+            if((bool)Session["GuestUser"] == true)
             {
                 aUser = default(User);
             }

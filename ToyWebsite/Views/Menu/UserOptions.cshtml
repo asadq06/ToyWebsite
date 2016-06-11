@@ -1,7 +1,7 @@
 ﻿@using ToyWebsite.Models
 @model User
 
-@if (Session["GuestUser"] == null || (bool)Session["GuestUser"] == true)
+@if ((bool)Session["GuestUser"] == true)
 {
     <div class="col-md-1 col-md-offset-10">
         <div class="form-group custom-form-group-left">

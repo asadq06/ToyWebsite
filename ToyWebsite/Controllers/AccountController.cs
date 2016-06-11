@@ -12,13 +12,17 @@ namespace ToyWebsite.Controllers
 {
     public class AccountController : Controller
     {
-
+        [LoggingFilter]
         public ActionResult Register()
         {
-            return View();
+            if ((bool)Session["GuestUser"] == true)
+                return View();
+            else
+                return RedirectToAction("LogInComplete");
         }
 
         [HttpPost]
+        [LoggingFilter]
         public ActionResult AddUser(User aUser)
         {
             StoreContext context = new StoreContext();
@@ -43,9 +47,14 @@ namespace ToyWebsite.Controllers
 
             //aUser.userPassword = HashPassword(aUser.userPassword);
 
-            //Adds new user and sets current user to this user
+            //Adds new user then updates userID
             context.Users.Add(aUser);
             context.SaveChanges();
+
+            //Adds guest account items to registered user cart
+            CartController.MergeGuestCart((int)Session["UserID"], aUser.userID);
+
+
             Session["GuestUser"] = false;
             Session["UserID"] = aUser.userID;
 
@@ -53,32 +62,39 @@ namespace ToyWebsite.Controllers
         }
 
         //Notifies the user registration is complete 
+        [LoggingFilter]
         public ActionResult RegistrationComplete()
         {
             return View();
         }
 
         //This controls the login page
+        [LoggingFilter]
         public ActionResult LogIn()
         {
-            if (Session["GuestUser"] == null || (bool)Session["GuestUser"] == true)
+            if ((bool)Session["GuestUser"] == true)
                 return View();
             else
                 return RedirectToAction("LogInComplete");
         }
 
         //This checks if the log in was successful
-        public ActionResult LogInCheck(User aUser)
+        [LoggingFilter]
+        public ActionResult LogInCheck(User aUser, bool mergeCarts)
         {
             StoreContext context = new StoreContext();
 
             List<User> matchingUsers = (from u in context.Users
-                                    where u.userName == aUser.userName && u.userPassword == aUser.userPassword
-                                    select u).ToList();
+                                        where u.userName == aUser.userName && u.userPassword == aUser.userPassword
+                                        select u).ToList();
 
             //Returns true if the user is not in the DB
             if (matchingUsers.Any())
             {
+                if (mergeCarts)
+                    CartController.MergeGuestCart((int)Session["UserID"], matchingUsers.Single().userID);
+
+
                 //There is an error if there are multiple matching users
                 Session["GuestUser"] = false;
                 Session["UserID"] = matchingUsers.Single().userID;
@@ -93,9 +109,10 @@ namespace ToyWebsite.Controllers
         }
 
         //Redirection to this page means successfull login
+        [LoggingFilter]
         public ActionResult LogInComplete()
         {
-            if (Session["GuestUser"] != null && (bool)Session["GuestUser"] == false)
+            if ((bool)Session["GuestUser"] == false)
             {
 
                 return View();
@@ -105,13 +122,15 @@ namespace ToyWebsite.Controllers
         }
 
         //Signs user our
+        [LoggingFilter]
         public ActionResult SignOut()
         {
-            Session["GuestUser"] = true;
-            Session["UserID"] = 0;
+            Session.Clear();
 
             return RedirectToAction("Index", "Home");
-;        }
+            
+        }
+        /*
         private const string _alg = "HmacSHA256";
         private const string _salt = "rz8LuOtFBXphj9WQfvFh"; // Generated at https://www.random.org/strings
 
@@ -146,6 +165,7 @@ namespace ToyWebsite.Controllers
                 return Convert.ToBase64String(hmac.Hash);
             }
         }
+        */
 
 
 
