@@ -17,6 +17,7 @@
                 <a href="@Url.Action("Item", "Product", new { anItemID = i.itemID })" >
                     <img src="@Url.Content("~/images/" + i.itemFileName)" class="img-rounded img-responsive" />
                 </a>
+                <label>@i.itemName</label>
             </div>
         }
     </div>
