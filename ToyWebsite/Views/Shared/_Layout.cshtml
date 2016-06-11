@@ -11,20 +11,25 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <div class="navbar-header">
-                @Html.ActionLink("Toy Website", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <buton type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
+                </buton>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
+                <div class="row">
+                    @{Html.RenderAction("UserOptions", "Menu");}
+                </div>
             </div>
             <div class="navbar-collapse collapse">
                 <div class="row">
@@ -50,7 +55,7 @@
                     <div class="col-md-2 col-md-offset-1">
                         <div class="form-group">
                             <a href="@Url.Action("Index","Cart")" class="btn btn-default btn-block" type="submit">
-            
+
                                 <span class="glyphicon glyphicon-shopping-cart"></span>
                                 <span class="badge">@{Html.RenderAction("CartQuantity", "Menu");}</span>
                             </a>
@@ -66,3 +71,9 @@
     </div>
 </body>
 </html>
+
+<footer>
+    <div class="container">
+        Beach ball image courtesy of smarnad at FreeDigitalPhotos.net
+    </div>
+</footer>
