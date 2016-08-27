@@ -1,0 +1,27 @@
+﻿@using ToyWebsite.Models
+@model List<Item>
+
+@{
+    ViewBag.Title = "Category";
+}
+
+@if (!Object.Equals(Model.First(), default(Item)))
+{
+    <h2>@Model.First().category.categoryName</h2>
+
+
+    foreach (Item i in Model)
+    {
+        <div class="col-md-2">
+            <a href="@Url.Action("Item", "Product", new { anItemID = i.itemID })">
+                <img src="@Url.Content("~/images/" + i.itemFileName)" class="img-rounded img-responsive" />
+            </a>
+            <label>@i.itemName</label>
+        </div>
+    }
+
+}
+else
+{
+    <h2>Category does not exist or has no items!</h2>
+}

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using ToyWebsite.DAL;
+using ToyWebsite.Migrations;
 
 namespace ToyWebsite
 {
@@ -19,6 +20,9 @@ namespace ToyWebsite
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<StoreContext, Configuration>());
+
+
         }
     }
 }

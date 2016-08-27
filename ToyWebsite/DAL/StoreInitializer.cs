@@ -11,6 +11,7 @@ namespace ToyWebsite.DAL
     {
         protected override void Seed(StoreContext context)
         {
+            /*
             //Users
             var users = new List<User>
             {
